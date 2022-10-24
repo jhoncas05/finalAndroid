@@ -1,5 +1,7 @@
 package com.example.afinal;
 
+import static java.lang.Double.valueOf;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +29,7 @@ public class sales extends AppCompatActivity {
     String  venta;
     double comision;
     double contadorComision;
+    double totalComision;
 
 
     @Override
@@ -51,16 +54,15 @@ public class sales extends AppCompatActivity {
 
     private void agregar(String scorreo, String sfecha, String scomercial) {
         venta = scomercial;
-        comision = 0.02 * (Double.parseDouble(venta));
-        contadorComision = contadorComision + comision;
+//        comision = 0.02 * (Double.parseDouble(venta));
+//        contadorComision = contadorComision + comision;
+//        totalComision = valueOf(contadorComision);
 
         Task<QuerySnapshot> querySnapshotTask = basedatos.collection("sales")
-                .whereEqualTo("correo", scorreo).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                .whereEqualTo("email", scorreo).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()){
-
-
                             if (task.getResult().isEmpty()){
                                 for (QueryDocumentSnapshot document : task.getResult()){
                                     idseller= document.getId();

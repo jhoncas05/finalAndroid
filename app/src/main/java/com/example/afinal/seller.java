@@ -108,7 +108,7 @@ public class seller extends AppCompatActivity {
     @Override
     public void onClick(View v) {
 
-         basedatos.collection("venta").whereEqualTo("email", email.getText().toString()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+         basedatos.collection("seller").whereEqualTo("email", email.getText().toString()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
